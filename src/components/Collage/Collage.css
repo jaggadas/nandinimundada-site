@@ -1,0 +1,45 @@
+.collage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-height: 360px;
+}
+
+.collage__item {
+  position: absolute;
+  transition: transform var(--dur-med) var(--ease);
+}
+
+.collage__item:hover {
+  transform: rotate(0deg) scale(1.03) !important;
+  z-index: 99 !important;
+}
+
+.collage__item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 10px 30px -15px rgba(31, 26, 22, 0.35);
+}
+
+.collage__placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 10px 30px -15px rgba(31, 26, 22, 0.35);
+}
+
+@media (max-width: 900px) {
+  .collage { aspect-ratio: 3 / 2; min-height: 280px; }
+}

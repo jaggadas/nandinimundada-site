@@ -1,0 +1,24 @@
+.hero {
+  padding-block: var(--space-9) var(--space-8);
+}
+
+.hero--center { text-align: center; }
+.hero--center .hero__subtitle { margin-inline: auto; }
+
+.hero--large { padding-block: var(--space-10) var(--space-9); }
+
+.hero__eyebrow { margin-bottom: var(--space-4); }
+
+.hero__title {
+  font-size: var(--fs-hero);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-5);
+}
+
+.hero__subtitle {
+  font-size: var(--fs-md);
+  color: var(--color-ink-soft);
+  max-width: 52ch;
+  line-height: var(--lh-snug);
+}

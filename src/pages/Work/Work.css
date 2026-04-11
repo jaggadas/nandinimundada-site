@@ -1,0 +1,15 @@
+.work {
+  padding-top: var(--space-9);
+}
+
+.work__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  padding-bottom: var(--space-10);
+}
+
+@media (max-width: 720px) {
+  .work { padding-top: var(--space-8); }
+  .work__list { gap: var(--space-9); }
+}

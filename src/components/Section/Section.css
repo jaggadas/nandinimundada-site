@@ -1,0 +1,20 @@
+.section {
+  padding-block: var(--space-8);
+}
+
+.section--alt {
+  background: var(--color-bg-alt);
+}
+
+.section__head {
+  margin-bottom: var(--space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.section__title {
+  font-size: var(--fs-3xl);
+  letter-spacing: -0.02em;
+  margin: 0;
+}

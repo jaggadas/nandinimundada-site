@@ -1,0 +1,28 @@
+.play {
+  padding-block: var(--space-9) var(--space-10);
+}
+
+.play__grid {
+  /* Give the grid more row height so image blocks feel big */
+}
+
+.play .stagger {
+  grid-auto-rows: minmax(70px, auto);
+  row-gap: var(--space-6);
+  column-gap: var(--space-5);
+}
+
+.play .stagger__media img,
+.play .stagger__placeholder {
+  aspect-ratio: auto;
+  height: 100%;
+  min-height: 220px;
+}
+
+.play .stagger__media {
+  height: 100%;
+}
+
+@media (max-width: 900px) {
+  .play { padding-block: var(--space-8) var(--space-9); }
+}

@@ -1,0 +1,108 @@
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-bg-alt);
+}
+
+.carousel__track {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+}
+
+.carousel__slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease);
+  pointer-events: none;
+}
+
+.carousel__slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel__slide figcaption {
+  position: absolute;
+  left: var(--space-5);
+  bottom: var(--space-5);
+  padding: var(--space-2) var(--space-4);
+  background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+  backdrop-filter: blur(8px);
+  font-size: var(--fs-sm);
+  color: var(--color-ink);
+  border-radius: var(--radius-sm);
+}
+
+.carousel__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-block: 1px solid var(--color-border);
+}
+
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+  font-size: var(--fs-md);
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease);
+}
+.carousel__btn:hover { transform: translateY(-50%) scale(1.05); }
+.carousel__btn--prev { left: var(--space-5); }
+.carousel__btn--next { right: var(--space-5); }
+
+.carousel__dots {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-5);
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--space-2);
+}
+.carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-ink) 35%, transparent);
+  border: 0;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.carousel__dot.is-active {
+  background: var(--color-ink);
+  transform: scale(1.3);
+}
+
+@media (max-width: 720px) {
+  .carousel__track { aspect-ratio: 4 / 3; }
+  .carousel__btn { width: 40px; height: 40px; }
+  .carousel__btn--prev { left: var(--space-3); }
+  .carousel__btn--next { right: var(--space-3); }
+}
