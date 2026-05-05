@@ -1,98 +1,86 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import HTMLFlipBook from "react-pageflip";
 import "./Flipbook.css";
 
-// A page-flip viewer. Pass an array of image URLs as `pages`.
-// - Click "Next" / "Prev" or use ← → arrow keys
-// - Click on a page to flip forward
-// Pages flip with a 3D rotateY animation around the left edge.
+// Realistic page-flip viewer powered by react-pageflip / StPageFlip.
+// Pages curl and fold as you turn them — drag the corner or click prev/next.
+// Pass an array of image URLs as `pages`.
 export default function Flipbook({ pages = [], title }) {
-  const [index, setIndex] = useState(0);
-  const [flip, setFlip] = useState(null); // null | "forward" | "backward"
-
-  const total = pages.length;
-  const canNext = index < total - 1;
-  const canPrev = index > 0;
-
-  const next = () => {
-    if (!flip && canNext) setFlip("forward");
-  };
-  const prev = () => {
-    if (!flip && canPrev) setFlip("backward");
-  };
-
-  const onAnimationEnd = () => {
-    if (flip === "forward") setIndex((i) => i + 1);
-    else if (flip === "backward") setIndex((i) => i - 1);
-    setFlip(null);
-  };
+  const bookRef = useRef(null);
+  const [page, setPage] = useState(0);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  });
+    setReady(true);
+  }, []);
 
-  if (total === 0) return null;
+  if (pages.length === 0) return null;
 
-  // Bottom-layer image — the page that stays on screen behind the flipping leaf
-  const bottomSrc =
-    flip === "forward" ? pages[index + 1] : pages[index];
-
-  // Leaf image — the page being animated. For forward, it's the current page
-  // rotating away. For backward, it's the previous page rotating in.
-  const leafSrc =
-    flip === "forward"
-      ? pages[index]
-      : flip === "backward"
-      ? pages[index - 1]
-      : null;
+  const total = pages.length;
+  const flip = (dir) => {
+    if (!bookRef.current) return;
+    const api = bookRef.current.pageFlip();
+    if (dir === "next") api.flipNext();
+    else api.flipPrev();
+  };
 
   return (
     <div className="flipbook">
       {title && <h3 className="flipbook__title">{title}</h3>}
 
       <div className="flipbook__stage">
-        <img className="flipbook__page" src={bottomSrc} alt="" />
-
-        {flip && (
-          <div
-            className={`flipbook__leaf flipbook__leaf--${flip}`}
-            onAnimationEnd={onAnimationEnd}
+        {ready && (
+          <HTMLFlipBook
+            ref={bookRef}
+            width={600}
+            height={800}
+            size="stretch"
+            minWidth={300}
+            maxWidth={1600}
+            minHeight={400}
+            maxHeight={2000}
+            maxShadowOpacity={0.5}
+            showCover={true}
+            mobileScrollSupport={true}
+            drawShadow={true}
+            flippingTime={900}
+            usePortrait={false}
+            startZIndex={0}
+            autoSize={true}
+            className="flipbook__book"
+            onFlip={(e) => setPage(e.data)}
           >
-            <img src={leafSrc} alt="" />
-          </div>
+            {pages.map((src, i) => (
+              <div className="flipbook__page" key={i}>
+                <img src={src} alt={`Page ${i + 1}`} />
+              </div>
+            ))}
+          </HTMLFlipBook>
         )}
 
-        {canPrev && (
-          <button
-            type="button"
-            className="flipbook__nav flipbook__nav--prev"
-            onClick={prev}
-            aria-label="Previous page"
-            disabled={!!flip}
-          >
-            ←
-          </button>
-        )}
-        {canNext && (
-          <button
-            type="button"
-            className="flipbook__nav flipbook__nav--next"
-            onClick={next}
-            aria-label="Next page"
-            disabled={!!flip}
-          >
-            →
-          </button>
-        )}
+        <button
+          type="button"
+          className="flipbook__nav flipbook__nav--prev"
+          aria-label="Previous page"
+          onClick={() => flip("prev")}
+          disabled={page <= 0}
+        >
+          ←
+        </button>
+        <button
+          type="button"
+          className="flipbook__nav flipbook__nav--next"
+          aria-label="Next page"
+          onClick={() => flip("next")}
+          disabled={page >= total - 1}
+        >
+          →
+        </button>
       </div>
 
       <div className="flipbook__meta">
         <span>
-          {index + 1} / {total}
+          {Math.min(page + 1, total)} / {total}
         </span>
       </div>
     </div>

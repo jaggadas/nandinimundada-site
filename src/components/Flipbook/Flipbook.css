@@ -16,62 +16,34 @@
 .flipbook__stage {
   position: relative;
   width: 100%;
-  max-width: min(70vh, 100%);
+  /* Stage uses two-page spread aspect (each page is 4:5 → spread is 8:5) */
+  aspect-ratio: 8 / 5;
+  max-height: 84vh;
   margin-inline: auto;
-  aspect-ratio: 4 / 5;
-  max-height: 78vh;
-  perspective: 2000px;
-  background: var(--color-bg-alt);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: 0 12px 40px rgba(31, 26, 22, 0.12);
+}
+
+.flipbook__book {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .flipbook__page {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
   background: var(--color-surface);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.flipbook__leaf {
-  position: absolute;
-  inset: 0;
-  transform-origin: left center;
-  backface-visibility: hidden;
-  background: var(--color-surface);
-  box-shadow: 8px 0 24px rgba(31, 26, 22, 0.18);
-  z-index: 2;
-  will-change: transform;
-}
-
-.flipbook__leaf img {
-  position: absolute;
-  inset: 0;
+.flipbook__page img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
-}
-
-@keyframes flipbook-forward {
-  0%   { transform: rotateY(0); }
-  100% { transform: rotateY(-180deg); }
-}
-
-@keyframes flipbook-backward {
-  0%   { transform: rotateY(-180deg); }
-  100% { transform: rotateY(0); }
-}
-
-.flipbook__leaf--forward {
-  animation: flipbook-forward 0.9s cubic-bezier(0.45, 0, 0.55, 1) forwards;
-}
-
-.flipbook__leaf--backward {
-  animation: flipbook-backward 0.9s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .flipbook__nav {
@@ -82,18 +54,18 @@
   height: 44px;
   border-radius: var(--radius-full);
   border: 1px solid var(--color-border);
-  background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
   backdrop-filter: blur(8px);
   font-size: var(--fs-md);
   color: var(--color-ink);
   cursor: pointer;
-  z-index: 3;
+  z-index: 5;
   transition: transform var(--dur-fast) var(--ease), opacity var(--dur-fast) var(--ease);
 }
 .flipbook__nav:hover { transform: translateY(-50%) scale(1.06); }
 .flipbook__nav:disabled { opacity: 0.4; cursor: not-allowed; }
-.flipbook__nav--prev { left: var(--space-4); }
-.flipbook__nav--next { right: var(--space-4); }
+.flipbook__nav--prev { left: var(--space-3); }
+.flipbook__nav--next { right: var(--space-3); }
 
 .flipbook__meta {
   display: flex;
@@ -106,8 +78,7 @@
 
 @media (max-width: 720px) {
   .flipbook__stage {
-    aspect-ratio: 3 / 4;
-    max-width: 100%;
+    aspect-ratio: 4 / 5;
     max-height: 75vh;
   }
   .flipbook__nav { width: 40px; height: 40px; }
