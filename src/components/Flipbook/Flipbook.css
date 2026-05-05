@@ -16,8 +16,7 @@
 .flipbook__stage {
   position: relative;
   width: 100%;
-  /* Stage uses two-page spread aspect (each page is 4:5 → spread is 8:5) */
-  aspect-ratio: 8 / 5;
+  /* aspect-ratio is set inline based on the book's pageAspect prop */
   max-height: 84vh;
   margin-inline: auto;
 }

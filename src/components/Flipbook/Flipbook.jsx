@@ -5,7 +5,10 @@ import "./Flipbook.css";
 // Realistic page-flip viewer powered by react-pageflip / StPageFlip.
 // Pages curl and fold as you turn them — drag the corner or click prev/next.
 // Pass an array of image URLs as `pages`.
-export default function Flipbook({ pages = [], title }) {
+//
+// `pageAspect` = width / height of a single page (default 0.8 → 4:5 portrait).
+// Use 1 for square pages, 0.7 for taller, 1.4 for landscape.
+export default function Flipbook({ pages = [], title, pageAspect = 0.8 }) {
   const bookRef = useRef(null);
   const [page, setPage] = useState(0);
   const [ready, setReady] = useState(false);
@@ -28,11 +31,14 @@ export default function Flipbook({ pages = [], title }) {
     <div className="flipbook">
       {title && <h3 className="flipbook__title">{title}</h3>}
 
-      <div className="flipbook__stage">
+      <div
+        className="flipbook__stage"
+        style={{ aspectRatio: `${2 * pageAspect} / 1` }}
+      >
         {ready && (
           <HTMLFlipBook
             ref={bookRef}
-            width={600}
+            width={Math.round(800 * pageAspect)}
             height={800}
             size="stretch"
             minWidth={300}

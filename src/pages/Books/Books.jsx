@@ -14,7 +14,7 @@ export default function Books() {
                 <p className="books__subtitle">{book.subtitle}</p>
               )}
             </header>
-            <Flipbook pages={book.pages} />
+            <Flipbook pages={book.pages} pageAspect={book.pageAspect} />
           </section>
         ))}
       </div>
