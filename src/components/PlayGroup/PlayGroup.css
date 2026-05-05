@@ -1,0 +1,207 @@
+.play-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.play-group__label {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.play-group__items {
+  position: relative;
+}
+
+/* Optional opening row — first N items rendered side-by-side */
+.play-group__row,
+.play-group__inline-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+.play-group__row .play-group__item,
+.play-group__inline-row .play-group__item {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.play-group__row .play-group__item.is-full,
+.play-group__inline-row .play-group__item.is-full {
+  flex: 1 1 100%;
+}
+
+/* Inline row inside a stack spans full width and stretches its images */
+.play-group--stack .play-group__inline-row {
+  width: 100%;
+  align-self: stretch;
+}
+.play-group--stack .play-group__inline-row .play-group__item {
+  flex: 1 1 0;
+  align-self: stretch;
+}
+.play-group--stack .play-group__inline-row .play-group__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .play-group__row .play-group__item,
+  .play-group__inline-row .play-group__item {
+    flex: 1 1 calc(50% - var(--space-4));
+  }
+  .play-group--stack .play-group__inline-row {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .play-group__row .play-group__item,
+  .play-group__inline-row .play-group__item {
+    flex: 1 1 100%;
+  }
+}
+
+.play-group__item {
+  margin: 0;
+  transition: transform var(--dur-med) var(--ease), box-shadow var(--dur-med) var(--ease);
+  filter: drop-shadow(0 8px 22px rgba(31, 26, 22, 0.12));
+}
+
+.play-group__item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.play-group__item:hover {
+  transform: translateY(-6px) rotate(0deg) scale(1.02) !important;
+  filter: drop-shadow(0 16px 36px rgba(31, 26, 22, 0.22));
+  z-index: 5;
+}
+
+/* All layouts use masonry-style columns so each image keeps its
+   natural aspect ratio (no cropping). Layouts differ in column count,
+   gaps, and per-image transforms (rotation / offset) for personality. */
+
+/* ---------- MOSAIC ---------- */
+/* All items in one horizontal row, equal share of width.
+   Very wide images (aspect > 2.2) break out to their own full-width row. */
+.play-group--mosaic .play-group__items {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+.play-group--mosaic .play-group__item {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.play-group--mosaic .play-group__item.is-full {
+  flex: 1 1 100%;
+  width: 100%;
+}
+
+/* ---------- SCATTER ---------- */
+/* 3-column grid (2 × 3) with gentle polaroid rotation */
+.play-group--scatter .play-group__items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  max-width: 980px;
+  margin-inline: auto;
+}
+.play-group--scatter .play-group__item {
+  transform: rotate(calc((var(--i) % 2) * 2.5deg - 1.25deg));
+}
+.play-group--scatter .play-group__item:nth-child(3n) {
+  transform: rotate(-2deg) translateY(8px);
+}
+.play-group--scatter .play-group__item:nth-child(3n + 1) {
+  transform: rotate(1.5deg) translateY(-4px);
+}
+/* Panoramic full-width image breaks across all 3 columns */
+.play-group--scatter .play-group__item.is-full {
+  grid-column: 1 / -1;
+}
+
+/* ---------- ROW ---------- */
+/* Denser 4-column masonry */
+.play-group--row .play-group__items {
+  column-count: 4;
+  column-gap: var(--space-4);
+}
+.play-group--row .play-group__item {
+  break-inside: avoid;
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+/* ---------- STACK ---------- */
+/* Asymmetric — full-width with alternating alignment and varied widths */
+.play-group--stack .play-group__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+.play-group--stack .play-group__item {
+  width: 60%;
+}
+.play-group--stack .play-group__item:nth-child(odd)  { align-self: flex-start; transform: translateX(-1%); }
+.play-group--stack .play-group__item:nth-child(even) { align-self: flex-end;   transform: translateX(1%); }
+.play-group--stack .play-group__item:nth-child(3n)   { width: 45%; }
+.play-group--stack .play-group__item:nth-child(3n+1) { width: 72%; }
+.play-group--stack .play-group__item:nth-child(5n)   { width: 38%; }
+
+/* Panoramic images break out of masonry column layouts */
+.play-group--row .play-group__item.is-full {
+  column-span: all;
+  margin-block: var(--space-6);
+}
+
+.play-group--stack .play-group__item.is-full {
+  width: 100% !important;
+  align-self: stretch !important;
+  transform: none !important;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .play-group--scatter .play-group__items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .play-group--row .play-group__items {
+    column-count: 2;
+  }
+  .play-group--mosaic .play-group__items {
+    flex-wrap: wrap;
+  }
+  .play-group--mosaic .play-group__item {
+    flex: 1 1 calc(50% - var(--space-4));
+  }
+  .play-group__item {
+    transform: none !important;
+  }
+  .play-group--stack .play-group__item {
+    width: 100% !important;
+    align-self: stretch !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .play-group--scatter .play-group__items {
+    grid-template-columns: 1fr;
+  }
+  .play-group--row .play-group__items {
+    column-count: 1;
+  }
+  .play-group--mosaic .play-group__item {
+    flex: 1 1 100%;
+  }
+}

@@ -1,24 +1,39 @@
 .home__hero {
-  padding-block: var(--space-9) var(--space-8);
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  min-height: calc(100vh - var(--nav-height));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-.home__hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  gap: var(--space-7);
-  align-items: center;
+.home__hero-overlay {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  display: flex;
+  justify-content: flex-end;
 }
 
 .home__hero-text {
+  max-width: 38ch;
+  padding: var(--space-6);
+  background: color-mix(in srgb, var(--color-bg) 78%, transparent);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
-  max-width: 48ch;
+  gap: var(--space-4);
 }
 
 .home__name {
   font-family: var(--font-display);
-  font-size: var(--fs-hero);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 0.95;
   letter-spacing: -0.02em;
   margin: 0;
@@ -31,34 +46,6 @@
   line-height: var(--lh-snug);
   color: var(--color-ink-soft);
   margin: 0;
-  max-width: 42ch;
-}
-
-.home__hero-image {
-  width: 100%;
-}
-
-.home__hero-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: var(--radius-md);
-}
-
-.home__hero-placeholder {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  color: var(--color-muted);
-  font-family: var(--font-body);
-  font-size: var(--fs-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
 }
 
 .home__carousel {
@@ -67,9 +54,13 @@
   margin-block: var(--space-8) var(--space-9);
 }
 
-@media (max-width: 900px) {
-  .home__hero-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
+@media (max-width: 720px) {
+  .home__hero {
+    min-height: 70vh;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: var(--space-7);
   }
+  .home__hero-overlay { justify-content: center; }
+  .home__hero-text { max-width: 90%; }
 }
