@@ -14,9 +14,10 @@ export default function WorkItem({
   aspect = "4/3",
   align = "center",
   href,
+  index,
 }) {
   const Wrapper = href ? "a" : "article";
-  const wrapperProps = href ? { href } : {};
+  const wrapperProps = href ? { href, target: "_blank", rel: "noreferrer" } : {};
 
   return (
     <Wrapper
@@ -34,9 +35,14 @@ export default function WorkItem({
       </div>
 
       <div className="work-item__meta">
+        {index != null && (
+          <p className="work-item__index">
+            № {String(index + 1).padStart(2, "0")}
+          </p>
+        )}
         <div className="work-item__row">
           <h2 className="work-item__title">{title}</h2>
-          {year && <span className="work-item__year">{year}</span>}
+          {href && <span className="work-item__open">[ open pdf ↗ ]</span>}
         </div>
         {role && <p className="work-item__role">{role}</p>}
         {description && <p className="work-item__desc">{description}</p>}

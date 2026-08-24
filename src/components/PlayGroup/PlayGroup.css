@@ -6,13 +6,16 @@
 }
 
 .play-group__label {
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
+  font-weight: var(--fw-semibold);
   font-size: var(--fs-xs);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-muted);
   margin: 0;
 }
+.play-group__label::before { content: "[ № "; }
+.play-group__label::after { content: " ]"; }
 
 .play-group__items {
   position: relative;

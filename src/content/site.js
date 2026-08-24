@@ -2,15 +2,30 @@
 export const site = {
   name: "Nandini Mundada",
   // Short bio under the hero name (2-4 lines of body copy)
-  bio: "A short description of who you are and what you do. A second line about your approach, your medium, or your philosophy — keep it warm and personal. Edit in src/content/site.js.",
-  email: "you@example.com",
-  instagram: { label: "@yourhandle", href: "https://instagram.com/yourhandle" },
-  location: "Based somewhere",
+  bio: "I see design as a way of telling stories — through brands, packaging and little worlds of type and illustration that feel clear, honest and warm.",
+  // Poster tag row on the home page
+  roles: ["visual identity", "illustration", "packaging"],
+  email: "nandini.mundada@gmail.com",
+  emailLabel: "nandini.mundada@gmail.com",
+  phone: "+91 8788049623",
+  instagram: {
+    label: "@nandini_mundada_",
+    href: "https://www.instagram.com/nandini_mundada_?igsh=d2lhOGk2NG02OHA2&igsi=d2lhOGk2NG02OHA2",
+  },
+  social: [
+    {
+      label: "Portfolio",
+      href: "https://drive.google.com/drive/folders/11rnR9FpQsUntX1NbUayiMzE_NISVjOKq",
+    },
+    { label: "Behance", href: "https://www.behance.net/nandini306110" },
+    { label: "Instagram", href: "https://www.instagram.com/nandini_mundada_" },
+    { label: "LinkedIn", href: "https://linkedin.com/in/nandini-r-mundada" },
+  ],
+  location: "Based in Bangalore",
   // Top nav — matches the reference layout (Work / (Play) / About / Contact)
   nav: [
     { label: "Work", to: "/work" },
     { label: "(Play)", to: "/play" },
-    { label: "Books", to: "/books" },
     { label: "About", to: "/about" },
     { label: "Contact", to: "/contact" },
   ],

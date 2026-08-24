@@ -6,8 +6,8 @@ export default function Work() {
   return (
     <div className="page work">
       <div className="work__list">
-        {workProjects.map((p) => (
-          <WorkItem key={p.slug} {...p} href={`#${p.slug}`} />
+        {workProjects.map((p, i) => (
+          <WorkItem key={p.slug} {...p} href={p.pdf} index={i} />
         ))}
       </div>
     </div>

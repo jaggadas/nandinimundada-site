@@ -5,22 +5,68 @@ import "./Home.css";
 
 const heroImage = "/background.png";
 
+// Letter-by-letter slide-up reveal for the name.
+function AnimatedLine({ text, startDelay = 0 }) {
+  return (
+    <span className="home__line" aria-hidden="true">
+      {text.split("").map((ch, i) => (
+        <span
+          key={i}
+          className="home__letter"
+          style={{ animationDelay: `${startDelay + i * 45}ms` }}
+        >
+          {ch === " " ? " " : ch}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export default function Home() {
+  const [first, last] = site.name.split(" ");
   return (
     <div className="page home">
-      <section
-        className="home__hero"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="home__hero-overlay">
-          <div className="home__hero-text">
-            <h1 className="home__name">{site.name}</h1>
+      <section className="home__poster">
+        <img
+          className="home__poster-img"
+          src={heroImage}
+          alt="Self-portrait illustration"
+        />
+
+        <div className="container home__credits">
+          <p>
+            <span className="home__credit-label">Created by</span> {site.name}
+          </p>
+          <p>
+            <span className="home__credit-label">Based in</span> Bangalore
+          </p>
+          <p className="home__credits-right">
+            <span className="home__credit-label">№</span> 01
+          </p>
+        </div>
+
+        <div className="container home__overlay">
+          <div className="home__title-block">
+            <p className="home__hello">Hello, I&rsquo;m</p>
+            <h1 className="home__name">
+              <span className="home__sr">{site.name}</span>
+              <AnimatedLine text={first} startDelay={200} />
+              <AnimatedLine text={last} startDelay={550} />
+            </h1>
+            <p className="home__tags">
+              {site.roles.map((r) => (
+                <span key={r}>[ {r} ]</span>
+              ))}
+            </p>
             <p className="home__bio">{site.bio}</p>
           </div>
         </div>
       </section>
 
       <section className="home__carousel">
+        <p className="eyebrow home__carousel-label">
+          [ selected work — click a page to open the pdf ]
+        </p>
         <Carousel slides={homeCarousel} autoplay interval={5000} />
       </section>
     </div>

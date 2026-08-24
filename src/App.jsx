@@ -5,7 +5,6 @@ import Work from "./pages/Work/Work.jsx";
 import Play from "./pages/Play/Play.jsx";
 import About from "./pages/About/About.jsx";
 import Contact from "./pages/Contact/Contact.jsx";
-import Books from "./pages/Books/Books.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 
 export default function App() {
@@ -18,7 +17,6 @@ export default function App() {
           <Route path="play" element={<Play />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="books" element={<Books />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

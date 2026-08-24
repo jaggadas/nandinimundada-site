@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
 
 *,
 *::before,
@@ -19,10 +19,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Paper grain over everything */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.28;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.16 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: var(--fw-bold);
   line-height: var(--lh-tight);
+  letter-spacing: -0.03em;
   margin: 0 0 var(--space-4);
 }
 
@@ -56,13 +73,37 @@ button {
   padding-top: calc(var(--nav-height) + var(--space-7));
   padding-bottom: var(--space-10);
   min-height: 100vh;
+  animation: page-in var(--dur-slow) var(--ease) both;
 }
 
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Tiny mono credit label, poster-style */
 .eyebrow {
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
   font-size: var(--fs-xs);
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-semibold);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: var(--color-muted);
+}
+
+/* Three poster swatch chips */
+.chips {
+  display: inline-flex;
+}
+.chips i {
+  width: 14px;
+  height: 10px;
+  display: block;
+}
+.chips i:nth-child(1) { background: var(--chip-yellow); }
+.chips i:nth-child(2) { background: var(--chip-orange); }
+.chips i:nth-child(3) { background: var(--chip-red); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

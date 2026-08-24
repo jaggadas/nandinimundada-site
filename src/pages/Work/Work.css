@@ -1,15 +1,40 @@
 .work {
-  padding-top: var(--space-9);
+  padding-top: var(--space-8);
 }
 
+/* Tidy poster grid: first project featured full-width, rest two-up */
 .work__list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-10);
-  padding-bottom: var(--space-10);
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  padding-bottom: var(--space-9);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8) var(--space-6);
+}
+
+.work__list .work-item {
+  max-width: none;
+  width: auto;
+  margin: 0;
+}
+
+.work__list .work-item:first-child {
+  grid-column: 1 / -1;
+}
+
+.work__list .work-item .work-item__meta {
+  padding-inline: 0;
+}
+
+.work__list .work-item:not(:first-child) .work-item__title {
+  font-size: var(--fs-xl);
 }
 
 @media (max-width: 720px) {
-  .work { padding-top: var(--space-8); }
-  .work__list { gap: var(--space-9); }
+  .work { padding-top: var(--space-7); }
+  .work__list {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+  }
 }

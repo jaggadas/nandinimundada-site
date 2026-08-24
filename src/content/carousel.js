@@ -1,8 +1,19 @@
 // Slides for the full-width home carousel.
-// Drop images into /public and reference them as "/filename.jpg".
-// Add or remove entries freely.
+// `href` opens on click (PDFs live in /public/pdfs).
 export const homeCarousel = [
-  { src: null, label: "Slide 1", alt: "", caption: "Optional caption" },
-  { src: null, label: "Slide 2", alt: "", caption: "" },
-  { src: null, label: "Slide 3", alt: "", caption: "" },
+  {
+    src: "/carousel/prava-type-motif.jpg",
+    alt: "Prava type motif illustration",
+    href: "/pdfs/prava-type-motif.pdf",
+  },
+  {
+    src: "/carousel/filo-milo-pro-illustration.jpg",
+    alt: "Filo Milo pro illustration",
+    href: "/pdfs/filo-milo-pro-illustration.pdf",
+  },
+  {
+    src: "/carousel/misty-woods-mobile-brochure.jpg",
+    alt: "Misty Woods mobile brochure",
+    href: "/pdfs/misty-woods-mobile-brochure.pdf",
+  },
 ];

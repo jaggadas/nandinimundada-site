@@ -21,6 +21,15 @@ export default function Contact() {
             </a>
           </div>
           <div>
+            <p className="eyebrow">Phone</p>
+            <a
+              className="contact__email"
+              href={`tel:${site.phone.replace(/\s/g, "")}`}
+            >
+              {site.phone}
+            </a>
+          </div>
+          <div>
             <p className="eyebrow">Elsewhere</p>
             <ul className="contact__social">
               {site.social.map((s) => (

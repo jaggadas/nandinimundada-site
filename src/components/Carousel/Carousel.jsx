@@ -49,7 +49,13 @@ export default function Carousel({ slides = [], autoplay = true, interval = 5000
             aria-hidden={i !== index}
           >
             {s.src ? (
-              <img src={s.src} alt={s.alt ?? ""} />
+              s.href ? (
+                <a href={s.href} target="_blank" rel="noreferrer">
+                  <img src={s.src} alt={s.alt ?? ""} />
+                </a>
+              ) : (
+                <img src={s.src} alt={s.alt ?? ""} />
+              )
             ) : (
               <div className="carousel__placeholder">
                 <span>{s.label ?? `Slide ${i + 1}`}</span>

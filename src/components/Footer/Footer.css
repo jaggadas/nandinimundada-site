@@ -19,7 +19,9 @@
 
 .footer__item {
   margin: 0;
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--color-ink-soft);
   white-space: nowrap;
 }

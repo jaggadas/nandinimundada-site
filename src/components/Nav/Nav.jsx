@@ -10,6 +10,7 @@ export default function Nav() {
     <header className="nav">
       <div className="container nav__inner">
         <NavLink to="/" className="nav__brand" onClick={() => setOpen(false)}>
+          <span className="chips" aria-hidden="true"><i /><i /><i /></span>
           {site.name}
         </NavLink>
 
