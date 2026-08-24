@@ -1,7 +1,4 @@
-.play {
-  padding-block: var(--space-9) var(--space-10);
-}
-
+/* Top/bottom padding comes from the global .page rule (clears the fixed nav) */
 .play__inner {
   display: flex;
   flex-direction: column;
@@ -9,6 +6,5 @@
 }
 
 @media (max-width: 900px) {
-  .play { padding-block: var(--space-8) var(--space-9); }
   .play__inner { gap: var(--space-9); }
 }

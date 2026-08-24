@@ -1,7 +1,4 @@
-.work {
-  padding-top: var(--space-8);
-}
-
+/* Top padding comes from the global .page rule (clears the fixed nav) */
 /* Tidy poster grid: first project featured full-width, rest two-up */
 .work__list {
   max-width: var(--container-max);
@@ -32,7 +29,6 @@
 }
 
 @media (max-width: 720px) {
-  .work { padding-top: var(--space-7); }
   .work__list {
     grid-template-columns: 1fr;
     gap: var(--space-7);

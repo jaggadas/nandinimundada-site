@@ -197,14 +197,18 @@
   }
 }
 
+/* Phone: keep two columns so the page doesn't become an endless single stack */
 @media (max-width: 600px) {
   .play-group--scatter .play-group__items {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
   }
   .play-group--row .play-group__items {
-    column-count: 1;
+    column-count: 2;
+    column-gap: var(--space-3);
   }
+  .play-group--row .play-group__item { margin-bottom: var(--space-3); }
   .play-group--mosaic .play-group__item {
-    flex: 1 1 100%;
+    flex: 1 1 calc(50% - var(--space-4));
   }
 }

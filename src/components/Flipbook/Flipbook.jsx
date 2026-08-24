@@ -12,6 +12,10 @@ export default function Flipbook({ pages = [], title, pageAspect = 0.8 }) {
   const bookRef = useRef(null);
   const [page, setPage] = useState(0);
   const [ready, setReady] = useState(false);
+  // ponytail: portrait mode decided once at mount; rotate = reload to switch
+  const [portrait] = useState(
+    () => window.matchMedia("(max-width: 720px)").matches
+  );
 
   useEffect(() => {
     setReady(true);
@@ -33,10 +37,11 @@ export default function Flipbook({ pages = [], title, pageAspect = 0.8 }) {
 
       <div
         className="flipbook__stage"
-        style={{ aspectRatio: `${2 * pageAspect} / 1` }}
+        style={{ aspectRatio: `${(portrait ? 1 : 2) * pageAspect} / 1` }}
       >
         {ready && (
           <HTMLFlipBook
+            key={portrait ? "portrait" : "spread"}
             ref={bookRef}
             width={Math.round(800 * pageAspect)}
             height={800}
@@ -50,7 +55,7 @@ export default function Flipbook({ pages = [], title, pageAspect = 0.8 }) {
             mobileScrollSupport={true}
             drawShadow={true}
             flippingTime={900}
-            usePortrait={false}
+            usePortrait={portrait}
             startZIndex={0}
             autoSize={true}
             className="flipbook__book"

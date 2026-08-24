@@ -138,8 +138,20 @@
   margin-bottom: var(--space-4);
 }
 
+/* Phone: stack the poster — credits, portrait, then text on cream */
 @media (max-width: 900px) {
-  .home__overlay { justify-content: center; align-items: flex-end; }
+  .home__poster { min-height: 0; }
+  .home__poster-img {
+    position: static;
+    width: 100%;
+    height: 46vh;
+    border-bottom: 2px solid var(--color-ink);
+  }
+  .home__credits { order: -1; }
+  .home__overlay {
+    justify-content: flex-start;
+    padding-block: var(--space-6) var(--space-7);
+  }
   .home__title-block { max-width: none; width: 100%; }
 }
 

@@ -30,7 +30,8 @@
 .footer__item--right { text-align: right; color: var(--color-muted); }
 
 @media (max-width: 600px) {
-  .footer { height: auto; padding-block: var(--space-2); }
+  /* Static on phones — a sticky bar eats too much small-screen height */
+  .footer { position: static; height: auto; padding-block: var(--space-3); }
   .footer__inner { grid-template-columns: 1fr; gap: var(--space-1); text-align: center; }
   .footer__item--left,
   .footer__item--right { text-align: center; }

@@ -1,7 +1,3 @@
-.books {
-  padding-block: var(--space-9) var(--space-10);
-}
-
 .books__inner {
   display: flex;
   flex-direction: column;
@@ -39,6 +35,5 @@
 }
 
 @media (max-width: 720px) {
-  .books { padding-block: var(--space-8) var(--space-9); }
   .books__inner { gap: var(--space-9); }
 }

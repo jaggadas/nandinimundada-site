@@ -1,7 +1,3 @@
-.about {
-  padding-block: var(--space-9) var(--space-10);
-}
-
 .about__inner {
   max-width: 760px;
   margin-inline: 0 auto;
