@@ -138,6 +138,34 @@
   margin-bottom: var(--space-4);
 }
 
+/* Poster back-cover CTA */
+.home__cta {
+  display: block;
+  background: var(--chip-yellow);
+  border-block: 2px solid var(--color-ink);
+  padding: var(--space-9) var(--container-pad);
+  text-align: center;
+}
+.home__cta-eyebrow {
+  color: var(--color-ink-soft);
+  margin-bottom: var(--space-4);
+}
+.home__cta-title {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.25rem, 6vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+}
+.home__cta-arrow {
+  display: inline-block;
+  margin-left: 0.25em;
+  transition: transform var(--dur-med) var(--ease);
+}
+.home__cta:hover .home__cta-arrow { transform: translateX(0.25em); }
+
 /* Phone: stack the poster — credits, portrait, then text on cream */
 @media (max-width: 900px) {
   .home__poster { min-height: 0; }

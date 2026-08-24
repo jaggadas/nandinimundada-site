@@ -1,5 +1,6 @@
 import PlayGroup from "../../components/PlayGroup/PlayGroup.jsx";
 import Flipbook from "../../components/Flipbook/Flipbook.jsx";
+import PageHead from "../../components/PageHead/PageHead.jsx";
 import { playGroups } from "../../content/playGroups.js";
 import { books } from "../../content/books.js";
 import "./Play.css";
@@ -10,6 +11,11 @@ const group = (id) => playGroups.find((g) => g.id === id);
 export default function Play() {
   return (
     <div className="page play">
+      <PageHead
+        index="03"
+        title="(Play)"
+        note="sketches, experiments & picture books"
+      />
       <div className="container play__inner">
         <PlayGroup {...group("03")} label="01" />
         {books.map((book) => (

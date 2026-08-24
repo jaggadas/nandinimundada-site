@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import Carousel from "../../components/Carousel/Carousel.jsx";
+import Marquee from "../../components/Marquee/Marquee.jsx";
 import { site } from "../../content/site.js";
 import { homeCarousel } from "../../content/carousel.js";
 import "./Home.css";
@@ -63,12 +65,22 @@ export default function Home() {
         </div>
       </section>
 
+      <Marquee items={site.roles.concat(["based in bangalore"])} />
+
       <section className="home__carousel">
         <p className="eyebrow home__carousel-label">
           [ selected work — click a page to open the pdf ]
         </p>
         <Carousel slides={homeCarousel} autoplay interval={5000} />
       </section>
+
+      <Link to="/contact" className="home__cta">
+        <p className="eyebrow home__cta-eyebrow">№ 02 — get in touch</p>
+        <span className="home__cta-title">
+          Have an idea? Let&rsquo;s talk
+          <span className="home__cta-arrow">→</span>
+        </span>
+      </Link>
     </div>
   );
 }

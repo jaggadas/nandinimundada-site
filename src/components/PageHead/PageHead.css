@@ -1,0 +1,48 @@
+.page-head {
+  margin-bottom: var(--space-8);
+  border-bottom: 2px solid var(--color-ink);
+}
+
+.page-head__inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding-bottom: var(--space-5);
+}
+
+.page-head__index {
+  color: var(--color-accent);
+  margin: 0 0 var(--space-2);
+}
+
+.page-head__title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  margin: 0;
+}
+
+.page-head__note {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  margin: 0;
+  padding-bottom: var(--space-2);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .page-head { margin-bottom: var(--space-7); }
+  .page-head__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+  .page-head__note { white-space: normal; }
+}

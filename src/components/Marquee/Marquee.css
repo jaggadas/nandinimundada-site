@@ -1,0 +1,27 @@
+.marquee {
+  overflow: hidden;
+  background: var(--chip-yellow);
+  border-block: 2px solid var(--color-ink);
+  padding-block: var(--space-3);
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll linear infinite;
+}
+
+.marquee__track span {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  white-space: pre;
+  color: var(--color-ink);
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

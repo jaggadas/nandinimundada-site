@@ -2,11 +2,13 @@ import { site } from "../../content/site.js";
 import { aboutSections } from "../../content/about.js";
 import "./About.css";
 
+import PageHead from "../../components/PageHead/PageHead.jsx";
+
 export default function About() {
   return (
     <div className="page about">
+      <PageHead index="04" title="About" note="the person behind the work" />
       <div className="container about__inner">
-        <h1 className="about__title">{site.name}</h1>
 
         <div className="about__sections">
           {aboutSections.map((section) => (
