@@ -53,9 +53,7 @@ export default function Home() {
       </section>
 
       <section className="home__carousel">
-        <p className="eyebrow home__carousel-label">
-          [ selected work — click a page to open the pdf ]
-        </p>
+        <h2 className="home__carousel-title">Some of my work</h2>
         <Carousel slides={homeCarousel} autoplay interval={5000} />
       </section>
 

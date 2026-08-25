@@ -25,24 +25,13 @@ export default function Contact() {
               </a>
             </li>
           ))}
-        </ul>
-
-        <div className="contact__credits">
-          <p>
-            <span className="contact__credit-label">Phone</span>
+          <li>
             <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
-          </p>
-          <p>
-            <span className="contact__credit-label">Instagram</span>
-            <a href={site.instagram.href} target="_blank" rel="noreferrer">
-              {site.instagram.label}
-            </a>
-          </p>
-          <p>
-            <span className="contact__credit-label">Location</span>
-            {site.location}
-          </p>
-        </div>
+          </li>
+          <li>
+            <span className="contact__chip">{site.location}</span>
+          </li>
+        </ul>
       </div>
     </div>
   );

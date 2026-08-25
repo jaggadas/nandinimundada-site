@@ -3,9 +3,9 @@ export const site = {
   name: "Nandini Mundada",
   // Short bio under the hero name (2-4 lines of body copy)
   //   keeps "look at." together so "at." never wraps alone
-  bio: "A graphic designer and illustrator working somewhere between illustration, branding, and editorial — taking stories and ideas and turning them into something people actually want to look at.",
+  bio: "A visual storyteller at heart — I help brands tell their stories through branding, publication design, and illustration, and I have fun making difficult topics feel simple and human.",
   // Poster tag row on the home page
-  roles: ["illustration", "branding", "editorial"],
+  roles: ["branding", "publication design", "illustration"],
   email: "nandini.mundada@gmail.com",
   emailLabel: "nandini.mundada@gmail.com",
   phone: "+91 8788049623",

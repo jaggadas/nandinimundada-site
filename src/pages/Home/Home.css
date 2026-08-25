@@ -111,9 +111,12 @@
   padding-inline: var(--container-pad);
   margin-block: var(--space-9);
 }
-.home__carousel-label {
-  display: block;
-  margin-bottom: var(--space-4);
+.home__carousel-title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  letter-spacing: -0.03em;
+  margin: 0 0 var(--space-5);
 }
 
 /* Poster back-cover CTA */

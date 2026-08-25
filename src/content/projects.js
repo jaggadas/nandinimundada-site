@@ -8,7 +8,7 @@
 export const workProjects = [
   {
     slug: "prava-type-motif",
-    title: "Prava — Type & Motif",
+    title: "Prava — Branding",
     cover: "/work/prava-type-motif.jpg",
     pdf: "/pdfs/prava-type-motif.pdf",
     width: "wide",
@@ -17,7 +17,7 @@ export const workProjects = [
   },
   {
     slug: "filo-milo-pro-illustration",
-    title: "Filo Milo Pro — Illustration",
+    title: "Filo Milo — Illustration & Packaging",
     cover: "/work/filo-milo-pro-illustration.jpg",
     pdf: "/pdfs/filo-milo-pro-illustration.pdf",
     width: "default",
@@ -35,7 +35,7 @@ export const workProjects = [
   },
   {
     slug: "sunthings-pack",
-    title: "Sunthings — Packaging",
+    title: "Sunthings — Illustration / Packaging",
     cover: "/work/sunthings-pack.jpg",
     pdf: "/pdfs/sunthings-pack.pdf",
     width: "wide",
@@ -44,7 +44,7 @@ export const workProjects = [
   },
   {
     slug: "deconstruct-serum",
-    title: "Deconstruct — Serum",
+    title: "Deconstruct — Icons & Packaging",
     cover: "/work/deconstruct-serum.jpg",
     pdf: "/pdfs/deconstruct-serum.pdf",
     width: "default",
