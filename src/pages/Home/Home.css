@@ -22,28 +22,6 @@
   animation: fade-in 0.9s var(--ease) both;
 }
 
-/* Poster credit micro-rows */
-.home__credits {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  display: flex;
-  gap: var(--space-8);
-  padding-block: var(--space-5);
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  animation: fade-in 0.8s var(--ease) 1.3s both;
-}
-.home__credits p { margin: 0; }
-.home__credit-label {
-  font-weight: var(--fw-semibold);
-  color: var(--color-ink-soft);
-  margin-right: var(--space-2);
-}
-.home__credits-right { margin-left: auto; }
-
 .home__overlay {
   position: relative;
   z-index: 1;
@@ -175,7 +153,6 @@
     height: 46vh;
     border-bottom: 2px solid var(--color-ink);
   }
-  .home__credits { order: -1; }
   .home__overlay {
     justify-content: flex-start;
     padding-block: var(--space-6) var(--space-7);
@@ -184,6 +161,5 @@
 }
 
 @media (max-width: 720px) {
-  .home__credits { gap: var(--space-4); flex-wrap: wrap; }
   .home__carousel { margin-block: var(--space-8); }
 }

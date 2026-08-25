@@ -34,15 +34,6 @@ export default function Home() {
           alt="Self-portrait illustration"
         />
 
-        <div className="container home__credits">
-          <p>
-            <span className="home__credit-label">Created by</span> {site.name}
-          </p>
-          <p>
-            <span className="home__credit-label">Based in</span> Bangalore
-          </p>
-        </div>
-
         <div className="container home__overlay">
           <div className="home__title-block">
             <p className="home__hello">Hello, I&rsquo;m</p>

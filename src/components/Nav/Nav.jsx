@@ -31,8 +31,9 @@ export default function Nav() {
                 key={item.href}
                 href={item.href}
                 className="nav__link"
-                target="_blank"
-                rel="noreferrer"
+                {...(item.download
+                  ? { download: item.download }
+                  : { target: "_blank", rel: "noreferrer" })}
                 onClick={() => setOpen(false)}
               >
                 {item.label}
