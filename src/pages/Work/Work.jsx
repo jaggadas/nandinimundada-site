@@ -7,7 +7,6 @@ export default function Work() {
   return (
     <div className="page work">
       <PageHead
-        index="02"
         title="Work."
         note={`${workProjects.length} projects — each opens a pdf`}
       />

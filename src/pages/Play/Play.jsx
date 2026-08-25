@@ -12,8 +12,7 @@ export default function Play() {
   return (
     <div className="page play">
       <PageHead
-        index="03"
-        title="(Play)"
+        title="Play."
         note="sketches, experiments & picture books"
       />
       <div className="container play__inner">

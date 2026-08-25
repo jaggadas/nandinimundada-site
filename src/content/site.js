@@ -2,9 +2,9 @@
 export const site = {
   name: "Nandini Mundada",
   // Short bio under the hero name (2-4 lines of body copy)
-  bio: "I see design as a way of telling stories — through brands, packaging and little worlds of type and illustration that feel clear, honest and warm.",
+  bio: "A graphic designer and illustrator working somewhere between illustration, brand, and editorial — taking stories and ideas and turning them into something people actually want to look at.",
   // Poster tag row on the home page
-  roles: ["visual identity", "illustration", "packaging"],
+  roles: ["illustration", "brand", "editorial"],
   email: "nandini.mundada@gmail.com",
   emailLabel: "nandini.mundada@gmail.com",
   phone: "+91 8788049623",
@@ -13,10 +13,6 @@ export const site = {
     href: "https://www.instagram.com/nandini_mundada_?igsh=d2lhOGk2NG02OHA2&igsi=d2lhOGk2NG02OHA2",
   },
   social: [
-    {
-      label: "Portfolio",
-      href: "https://drive.google.com/drive/folders/11rnR9FpQsUntX1NbUayiMzE_NISVjOKq",
-    },
     { label: "Behance", href: "https://www.behance.net/nandini306110" },
     { label: "Instagram", href: "https://www.instagram.com/nandini_mundada_" },
     { label: "LinkedIn", href: "https://linkedin.com/in/nandini-r-mundada" },
@@ -25,7 +21,7 @@ export const site = {
   // Top nav — matches the reference layout (Work / (Play) / About / Contact)
   nav: [
     { label: "Work", to: "/work" },
-    { label: "(Play)", to: "/play" },
+    { label: "Play", to: "/play" },
     { label: "About", to: "/about" },
     { label: "Contact", to: "/contact" },
     { label: "Behance ↗", href: "https://www.behance.net/nandini306110" },

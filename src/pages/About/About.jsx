@@ -7,9 +7,8 @@ import PageHead from "../../components/PageHead/PageHead.jsx";
 export default function About() {
   return (
     <div className="page about">
-      <PageHead index="04" title="About" note="the person behind the work" />
+      <PageHead title="About" note="the person behind the work" />
       <div className="container about__inner">
-
         <div className="about__sections">
           {aboutSections.map((section) => (
             <section key={section.id} className="about__section">
@@ -24,6 +23,13 @@ export default function About() {
             </section>
           ))}
         </div>
+
+        <aside className="about__portrait">
+          <img src="/about.jpg" alt={site.name} />
+          <p className="eyebrow about__portrait-caption">
+            [ golden hour, bangalore ]
+          </p>
+        </aside>
       </div>
     </div>
   );

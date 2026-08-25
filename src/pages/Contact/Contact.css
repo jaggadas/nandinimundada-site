@@ -1,37 +1,92 @@
-.contact__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-7);
+.contact {
+  display: flex;
+  flex-direction: column;
 }
 
-.contact__grid p { margin-bottom: var(--space-3); }
+.contact__lede {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  margin: var(--space-6) 0 var(--space-3);
+}
 
+/* The email is the hero */
 .contact__email {
   font-family: var(--font-display);
-  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
-  font-weight: var(--fw-semibold);
-  display: inline-block;
+  font-weight: 900;
+  font-size: clamp(1.65rem, 5.6vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
   overflow-wrap: anywhere;
+  align-self: flex-start;
+  border-bottom: 4px solid var(--color-ink);
+  padding-bottom: var(--space-2);
+  transition: color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+.contact__email:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.contact__email-arrow {
+  display: inline-block;
+  margin-left: 0.15em;
+  transition: transform var(--dur-med) var(--ease);
+}
+.contact__email:hover .contact__email-arrow {
+  transform: translate(0.12em, -0.12em);
 }
 
+/* Bordered mono link chips */
 .contact__social {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: var(--space-8) 0 0;
   display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.contact__social a {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 2px solid var(--color-ink);
+  padding: var(--space-3) var(--space-5);
+  transition: background var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+.contact__social a:hover {
+  background: var(--color-ink);
+  color: var(--color-bg);
 }
 
-.contact__location {
-  color: var(--color-ink-soft);
-  max-width: 30ch;
+/* Poster credit micro-rows */
+.contact__credits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  margin-top: var(--space-9);
+  padding-top: var(--space-5);
+  border-top: 2px solid var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.contact__credits p { margin: 0; }
+.contact__credit-label {
+  display: block;
+  font-weight: var(--fw-semibold);
+  color: var(--color-muted);
+  margin-bottom: var(--space-1);
 }
 
 @media (max-width: 720px) {
-  .contact__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
-  .contact__email { font-size: var(--fs-lg); }
+  .contact__lede { margin-top: var(--space-2); }
+  .contact__email-arrow { display: none; }
+  .contact__social a { padding: var(--space-2) var(--space-4); }
+  .contact__credits { gap: var(--space-5); margin-top: var(--space-8); }
 }
