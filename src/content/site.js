@@ -28,5 +28,6 @@ export const site = {
     { label: "(Play)", to: "/play" },
     { label: "About", to: "/about" },
     { label: "Contact", to: "/contact" },
+    { label: "Behance ↗", href: "https://www.behance.net/nandini306110" },
   ],
 };

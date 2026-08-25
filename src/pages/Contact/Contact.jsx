@@ -1,15 +1,15 @@
-import Hero from "../../components/Hero/Hero.jsx";
 import Section from "../../components/Section/Section.jsx";
+import PageHead from "../../components/PageHead/PageHead.jsx";
 import { site } from "../../content/site.js";
 import "./Contact.css";
 
 export default function Contact() {
   return (
     <div className="page">
-      <Hero
-        eyebrow="Contact"
-        title="Let's talk"
-        subtitle="Tell me about your project, idea, or just say hi. I usually reply within a few days."
+      <PageHead
+        index="05"
+        title="Let&rsquo;s talk"
+        note="tell me about your project — i reply within a few days"
       />
 
       <Section>

@@ -25,19 +25,32 @@ export default function Nav() {
         </button>
 
         <nav className={`nav__links ${open ? "is-open" : ""}`}>
-          {site.nav.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              end={item.to === "/"}
-              className={({ isActive }) =>
-                `nav__link ${isActive ? "is-active" : ""}`
-              }
-              onClick={() => setOpen(false)}
-            >
-              {item.label}
-            </NavLink>
-          ))}
+          {site.nav.map((item) =>
+            item.href ? (
+              <a
+                key={item.href}
+                href={item.href}
+                className="nav__link"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setOpen(false)}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.to === "/"}
+                className={({ isActive }) =>
+                  `nav__link ${isActive ? "is-active" : ""}`
+                }
+                onClick={() => setOpen(false)}
+              >
+                {item.label}
+              </NavLink>
+            )
+          )}
         </nav>
       </div>
     </header>
