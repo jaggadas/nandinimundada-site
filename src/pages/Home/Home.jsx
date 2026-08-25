@@ -16,7 +16,7 @@ function AnimatedLine({ text, startDelay = 0 }) {
           className="home__letter"
           style={{ animationDelay: `${startDelay + i * 45}ms` }}
         >
-          {ch === " " ? " " : ch}
+          <span className="home__letter-inner">{ch === " " ? " " : ch}</span>
         </span>
       ))}
     </span>
