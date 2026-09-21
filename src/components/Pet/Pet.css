@@ -1,0 +1,17 @@
+.pet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(21px * 3);
+  height: calc(16px * 3);
+  background-image: url("/pet-sheet.png");
+  background-size: calc(84px * 3) calc(64px * 3);
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  z-index: 90;
+  cursor: grab;
+  touch-action: none;
+  will-change: transform;
+  user-select: none;
+}
+.pet:active { cursor: grabbing; }

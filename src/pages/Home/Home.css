@@ -64,6 +64,7 @@
 
 .home__line {
   display: block;
+  width: fit-content; /* the pet lands on the name — no invisible ledge */
   overflow: hidden;
   padding-bottom: 0.06em;
 }
