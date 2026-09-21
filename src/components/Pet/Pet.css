@@ -4,10 +4,6 @@
   left: 0;
   width: calc(21px * 3);
   height: calc(16px * 3);
-  background-image: url("/pet-sheet.png");
-  background-size: calc(84px * 3) calc(64px * 3);
-  background-repeat: no-repeat;
-  image-rendering: pixelated;
   z-index: 90;
   cursor: grab;
   touch-action: none;
@@ -15,3 +11,38 @@
   user-select: none;
 }
 .pet:active { cursor: grabbing; }
+
+.pet__sprite {
+  width: 100%;
+  height: 100%;
+  background-image: url("/pet-sheet.png");
+  background-size: calc(84px * 3) calc(64px * 3);
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+
+/* Nametag on hover */
+.pet__tag {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  background: var(--color-bg);
+  border: 2px solid var(--color-ink);
+  padding: 2px 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+.pet:hover .pet__tag {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

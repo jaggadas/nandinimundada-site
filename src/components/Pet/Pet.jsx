@@ -27,10 +27,12 @@ const SOLIDS =
 
 export default function Pet() {
   const elRef = useRef(null);
+  const spriteRef = useRef(null);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const el = elRef.current;
+    const sprite = spriteRef.current;
 
     // ---- state: x = feet center, y = feet, in viewport (fixed) px ----
     const s = {
@@ -71,7 +73,7 @@ export default function Pet() {
     };
 
     const setSprite = (anim, frameIdx) => {
-      el.style.backgroundPosition = `${-frameIdx * W}px ${-ANIM[anim].row * H}px`;
+      sprite.style.backgroundPosition = `${-frameIdx * W}px ${-ANIM[anim].row * H}px`;
     };
 
     let raf;
@@ -143,9 +145,8 @@ export default function Pet() {
         }
       }
 
-      el.style.transform =
-        `translate3d(${s.x - HW}px, ${s.y - H}px, 0) ` +
-        `scaleX(${-s.dir}) rotate(${tilt * s.dir}deg)`;
+      el.style.transform = `translate3d(${s.x - HW}px, ${s.y - H}px, 0)`;
+      sprite.style.transform = `scaleX(${-s.dir}) rotate(${tilt * s.dir}deg)`;
       raf = requestAnimationFrame(tick);
     };
 
@@ -191,5 +192,10 @@ export default function Pet() {
     };
   }, []);
 
-  return <div ref={elRef} className="pet" aria-hidden="true" />;
+  return (
+    <div ref={elRef} className="pet" aria-hidden="true">
+      <div ref={spriteRef} className="pet__sprite" />
+      <span className="pet__tag">Pongo</span>
+    </div>
+  );
 }
